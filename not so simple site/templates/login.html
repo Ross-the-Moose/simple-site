@@ -1,0 +1,17 @@
+
+
+{% extends 'base.html' %}
+{% block content %}
+    {% if not session %}
+    <a class="menu-link" href="/firsttry"> В первый раз? -- тык </a>
+        <form method="POST">
+            <input type="text" name="username" class="form-control" placeholder="Enter your login">
+            <input type="password" name="password" class="form-control" placeholder="Your password">
+            <input type="submit" value="Войти" class="sub-button">
+        </form>
+    {% else %}
+        <h3>Пользователь: {{session['name']}} </h3>
+        <a class="menu-link" href="/logout">Выход</a>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,47 @@
+<div class="container">
+    
+    {% extends "base.html" %}
+
+    {% block content %}
+    
+    <h2>Категории товаров</h2>
+    <ul>
+        <li> <a class="menu-link" href="drinks"> Напитки для здоровья и души </a> </li>
+    </ul>
+
+    <a class="menu-link" href="trash"> Корзина </a>
+    <br>
+    <a class="menu-link" href="about"> О нас - жми, чтобы узнать:) </a>
+    <br>
+
+    <p class="desk"> Вам что-то не понравилось? Брак товара? Ракетки для настольного тенниса с дырками? Слишком большой чайный пакетик? Бинокль-убийца? - Вопросы не к нам. Так и задумано!</p>
+    <p class="desk"> А теперь от плохого юмора к хорошим отзывам: если хотите рассказать всем о своем опыте сотрудничества с нами - заполните форму ниже!</p>
+
+    <form method = "post">
+        <legend>Оставьте ваш oтзыв</legend>
+        <input type="text" name="name" style="color: #000;" placeholder="введите свое имя"> <br><br>
+        <input type="email" name="email" style="color: #000;" placeholder="введите свой e-mail"> <br><br>
+        <textarea name="text" class="custom-field" cols="30" rows="10"></textarea><br><br>
+        <input type="submit" class="sub-button" value="сохранить"><br><br>
+    </form>
+
+    {% if feedback %}
+            <div class="feedback-area">
+                <h3>Отзывы</h1>
+                {% for feed in feedback %}
+                <div class="feedback">
+                    <div class="login-feedback">{{feed.name}}</div>
+                    <div class="text-feedback">{{feed.text}}</div>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
+    
+    <br>
+    <p class="desk"> Не можете нас найти? Мы поможем!</p>
+    <p class="desk"> Обернись, мы тебя уже нашли</p>
+    <p class="desk"> хахаха</p>
+    <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/ulitsa_dzhona_lennona/141840569377/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Улица Джона Леннона</a><a href="https://yandex.ru/maps/2/saint-petersburg/category/landmark_attraction/89683368508/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Достопримечательность в Санкт‑Петербурге</a><iframe src="https://yandex.ru/map-widget/v1/-/CCUm6KVnDD" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+    {% endblock %}
+</div>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if not session %}
+        <h2> Чтобы посмотреть товары в корзине, надо авторизоваться</h2> <h3> <a class="menu-link" href="/login"> ТЫК сюды </a></h3>
+    {% else %}    
+    <div class="main-wrapper">
+        <div class="catalog-items">
+            {% if items[0] == items[1] == items[2] == 0 %}
+                <h2>Товаров в корзине пока нет!</h2>
+            {% else %}
+                <h3> В корзине: </h3>
+                    {% if items[0] != 0 %}
+                        <h3>Цитрусовый лимонад от Бобби:</h3> {{items[0]}}
+                    {% endif %}
+                    {% if items[1] != 0 %}
+                        <h3>Медовый лимонад от Бобби:</h3> {{items[1]}}
+                    {% endif %}
+                    {% if items[2] != 0 %}
+                        <h3>Имбирно-пряный лимонад от Бобби:</h3> {{items[2]}}
+                    {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    
+    {% endif %}
+
+{% endblock %}

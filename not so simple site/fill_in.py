@@ -1,0 +1,41 @@
+from email.mime import image
+from orm import *
+from datetime import datetime
+
+db.create_all()
+
+Dean = the_user(username = "Dean", password = "2401" , reg_data = datetime.now(), age=26, address="Kansas", hon = 1, imb = 1, lem = 0)
+Sam = the_user(username = "Sam", password = "lawboi", reg_data = datetime.now(), age=22, address="Stanford", hon = 0, imb = 3, lem = 2)
+Peter = the_user(username = "WebHead", password = "gr8power", reg_data = datetime.now(), age=17, address="Queens", hon = 0, imb = 0, lem = 0)
+lemonade = category(cat_name = "drinks", description = "tasty")
+citrus = product(cat_id = 1, prod_name="Цитрусовый лимонад от Бобби", description = "Никого - кроме аллергиков - не оставит равнодушным! Очень вкусно! Очень освежает! Цитрусовые нотки сделают вас счастливее!",price= 650, image="citruus.png")
+honey = product(cat_id = 1, prod_name="Имбирно-пряный лимонад от Бобби", description = "Никого - кроме аллергиков - не оставит равнодушным! Очень вкусно! Очень освежает! Пряные нотки сделают вас счастливее!", price= 670, image="ginger.png")
+ginger = product(cat_id = 1, prod_name="Медовый лимонад от Бобби", description = "Никого - кроме аллергиков - не оставит равнодушным! Очень вкусно! Очень освежает! Медовые нотки сделают вас счастливее!", price=690, image="honeyy.png")
+fav1 = favorites(prod_id = 1, user_id = 1)
+fav2 = favorites(prod_id = 2, user_id = 3)
+order_dean = orders(user_id = 1, money = 650, if_payed = True)
+order_pete = orders(user_id = 3, money = 670, if_payed = False)
+order_sam = orders(user_id = 2, money = 1360, if_payed = False)
+comp_dean = order_comp(order_id = 1, prod_id = 1, amount = 1)
+comp_pete = order_comp(order_id = 2, prod_id = 2, amount = 1)
+comp_sam1 = order_comp(order_id = 3, prod_id = 2, amount = 1)
+comp_sam2 = order_comp(order_id = 3, prod_id = 3, amount = 1)
+
+db.session.add(Dean)
+db.session.add(Sam)
+db.session.add(Peter)
+db.session.add(lemonade)
+db.session.add(citrus)
+db.session.add(ginger)
+db.session.add(honey)
+db.session.add(fav1)
+db.session.add(fav2)
+db.session.add(order_dean)
+db.session.add(order_pete)
+db.session.add(order_sam)
+db.session.add(comp_dean)
+db.session.add(comp_pete)
+db.session.add(comp_sam1)
+db.session.add(comp_sam2)
+
+db.session.commit()
